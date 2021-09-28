@@ -1,5 +1,50 @@
 @import "/variables";
 
 .aktivitetsdetaljer{
-    
+    background-color: $accentColorDark;
+    min-height: 100vh;
+
+    &__image{
+        display: grid;
+
+        .image{
+            grid-area: 1/1/2/2;
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            object-position: 50% 0;
+            overflow: hidden;
+        }
+
+        .button{
+            grid-area: 1/1/2/2;
+            place-self: end;
+            width: 60%;
+            margin-bottom: 1.5rem;
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__info{
+        color: $primaryColor;
+        margin: 1rem $mainPadding;
+
+        .name{
+            font-size: $fontSizeMedium;
+        }
+
+        .timeWeekday{
+            display: flex;
+            column-gap: 0.5rem;
+            
+            .weekday{
+                text-transform: capitalize;
+            }
+        }
+
+        .age,
+        .description{
+            margin-top: 0.8rem;
+        }
+    }
 }
