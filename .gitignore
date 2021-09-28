@@ -8,6 +8,7 @@
 .eslintcache
 .env
 .env.local
+/Opgave
 
 # testing
 /coverage
