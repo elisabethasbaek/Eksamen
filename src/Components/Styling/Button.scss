@@ -1,0 +1,17 @@
+@import "/variables";
+
+.button{
+    border: none;
+    background-color: $accentColorDark;
+    height: 3.5rem;
+    color: $primaryColor;
+    font-size: $fontSizeSmall;
+    box-shadow: $dropShadow;
+    border-radius: 10px;
+    width: 80%;
+    justify-self: center;
+
+    &:active{
+        box-shadow: none;
+    }
+}

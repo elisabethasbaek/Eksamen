@@ -1,5 +1,54 @@
 @import "/variables";
 
+@keyframes onLoad{
+    0%{
+        transform: translateY(50vh);
+        opacity: 0%;
+    }
+    50%{
+        transform: translateY(0vh);
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
 .velkommen{
-    
+    display: grid;
+    grid-template-rows: 70vh 30vh;
+
+    &__background{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -10;
+        max-width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: 50% 0;
+        overflow: hidden;
+    }
+
+    &__logo{
+        grid-area: 1/1/2/2;
+        align-self: end;
+        margin-bottom: 1rem;
+    }
+
+    &__button{
+        grid-area: 2/1/3/2;
+        align-self: end;
+        justify-self: center;
+
+        .button{
+            width: 65vw;
+            margin-bottom: 3.5rem;
+            animation-name: onLoad;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+        }
+    }
 }

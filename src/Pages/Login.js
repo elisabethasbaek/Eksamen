@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form";
 import TokenContext from "../TokenContext";
 import {useState, useContext} from "react";
 import { navigate } from "@reach/router";
+import Button from "../Components/Button";
 
 export default function Login(){
     var {handleSubmit, register, formState: {errors}} = useForm();
@@ -68,7 +69,7 @@ export default function Login(){
                             {...register("password", {required: true})}>
                         </input>
 
-                        <button type="submit" className="button">Log ind</button>
+                        <Button type="submit" text="Log ind" />
                     </fieldset>
                 </form>
 
