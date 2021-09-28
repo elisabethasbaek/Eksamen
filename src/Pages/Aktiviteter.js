@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Styling/Aktiviteter.scss";
 import { Link } from "@reach/router";
+import Heading from "../Components/Heading";
 
 export default function Aktiviteter(){
     var [activities, setActivities] = useState([]);
@@ -15,6 +16,8 @@ export default function Aktiviteter(){
 
     return(
         <main className="aktiviteter">
+            <Heading text="Aktiviteter" />
+            
             <ul className="aktiviteter__liste">
                 {activities && activities.map(function(activity){
                     return(

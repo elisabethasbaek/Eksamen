@@ -16,7 +16,7 @@
             .enkeltAktivitet{
                 display: grid;
                 color: $primaryFontColor;
-                margin: 1.8rem 1.5rem;
+                margin: 1.8rem $mainPadding;
 
                 &__image{
                     grid-area: 1/1/-1/-1;

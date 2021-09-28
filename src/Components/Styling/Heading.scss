@@ -1,0 +1,13 @@
+@import "/variables";
+
+.heading{
+    padding: $mainPadding;
+    padding-bottom: 0;
+    color: $primaryColor;
+    background-color: transparent;
+    font-weight: 400;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+}
