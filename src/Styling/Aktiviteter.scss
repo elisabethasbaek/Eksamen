@@ -1,5 +1,27 @@
 @import "/variables";
 
 .aktiviteter{
-    
+    &__liste{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        
+        .enkeltAktivitet{
+            display: grid;
+            color: $primaryFontColor;
+            margin: 1.5rem;
+
+            &__image{
+                grid-area: 1/1/-1/-1;
+            }
+
+            &__name{
+                grid-area: 1/1/-1/-1;
+            }
+
+            &__age{
+                grid-area: 1/1/-1/-1;
+            }
+        }
+    }
 }
