@@ -2,15 +2,18 @@
 
 .menu{
     background-color: $primaryColor;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    box-shadow: -2px -2px 5px rgba(0,0,0,0.4);
+    padding: 0.5rem 0;
 
     &__list{
         display: flex;
         justify-content: space-between;
+        margin: 0 1.5rem;
 
         .item{
             color: $primaryFontColor;
