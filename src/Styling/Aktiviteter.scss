@@ -1,6 +1,10 @@
 @import "/variables";
 
 .aktiviteter{
+    background-color: $accentColorDark;
+    position: absolute;
+    top: 0;
+
     &__liste{
         list-style: none;
         margin: 0;
@@ -9,18 +13,34 @@
         .enkeltAktivitet{
             display: grid;
             color: $primaryFontColor;
-            margin: 1.5rem;
+            margin: 1.8rem 1.5rem;
 
             &__image{
                 grid-area: 1/1/-1/-1;
+                width: 100%;
+                height: 40vh;
+                object-fit: cover;
+                object-position: 50% 0;
+                border-top-right-radius: 35px;
+                border-top-left-radius: 35px;
+                border-bottom-right-radius: none;
+                border-bottom-left-radius: 35px;
             }
 
-            &__name{
+            &__text{
                 grid-area: 1/1/-1/-1;
-            }
+                align-self: end;
+                border-top-right-radius: 35px;
+                border-bottom-left-radius: 35px;
+                background-color: $accentColorLightOpacity;
+                padding: 1.2rem 1.5rem;
 
-            &__age{
-                grid-area: 1/1/-1/-1;
+                .name,
+                .age{
+                    line-height: 150%;
+                    font-size: $fontSizeSmall;
+                    color: $primaryFontColor;
+                }
             }
         }
     }

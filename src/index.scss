@@ -1,10 +1,27 @@
 @import "/variables";
 
-*{
-  margin: 0;
-  box-sizing: border-box;
+@keyframes pageChange {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 
-body {
-  font-family: $fontStack;
+*,
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $fontStack;
+}
+
+.transitionOnPageChange{
+    animation-name: pageChange;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
 }

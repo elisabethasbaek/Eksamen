@@ -1,3 +1,4 @@
+import "./index.scss";
 import TokenContext from "./TokenContext";
 import React, { useState } from "react";
 import { Router } from "@reach/router";

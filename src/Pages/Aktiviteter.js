@@ -19,8 +19,11 @@ export default function Aktiviteter(){
                     return(
                         <li className="enkeltAktivitet" key={`${activity.id}${activity.name}`}>
                             <img src={activity.asset.url} alt="" className="enkeltAktivitet__image"/>
-                            <p className="enkeltAktivitet__name">{activity.name}</p>
-                            <p className="enkeltAktivitet__age">{activity.minAge}-{activity.maxAge} år</p>
+                            <div className="enkeltAktivitet__text">
+                                <p className="name">{activity.name}</p>
+                                <p className="age">{activity.minAge}-{activity.maxAge} år</p>
+
+                            </div>
                         </li>
                     )
                 })}
