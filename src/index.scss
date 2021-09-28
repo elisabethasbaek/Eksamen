@@ -1,4 +1,4 @@
-@import "./Variables.scss";
+@import "/variables";
 
 *{
   margin: 0;
@@ -6,5 +6,5 @@
 }
 
 body {
-  font-family: $mainFontStack;
+  font-family: $fontStack;
 }

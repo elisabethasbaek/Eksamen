@@ -1,0 +1,103 @@
+@import "/variables";
+
+.login{
+    max-height: 100vh;
+    overflow: hidden;
+    
+    &__background{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -10;
+        display: grid;
+
+        .image{
+            grid-area: 1/1/2/2;
+            max-width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: 50% 0;
+            overflow: hidden;
+        }
+
+        .overlay{
+            grid-area: 1/1/2/2;
+            width: 300vw;
+            height: 55vh;
+            z-index: 10;
+            background-color: $accentColorDark;
+            opacity: 0.5;
+            transform: translateX(-400px) rotate(-30deg);
+            margin-top: 20vh;
+        }
+    }
+
+    &__form{
+        margin: 25vh 2rem 0 2rem;
+
+        fieldset{
+            display: grid;
+            border: none;
+            color: white;
+            font-size: $fontSizeLarge;
+            padding: 0;
+        }
+        
+        legend{
+            padding-bottom: 0.5rem;
+        }
+
+        .username,
+        .password{
+            border: none;
+            font-size: $fontSizeSmall;
+            color: $primaryFontColor;
+            padding: 0.3rem 1.5rem;
+            height: 3.5rem;
+            margin-bottom: 1.2rem;
+            background-color: $primaryColor;
+
+            &:focus{
+                outline: none;
+                border: 3px solid $accentColorLight;
+            }
+            
+            &::placeholder{
+                color: darkgrey;
+            }
+        }
+
+        .button{
+            border: none;
+            background-color: $accentColorDark;
+            height: 3.5rem;
+            color: $primaryColor;
+            font-size: $fontSizeSmall;
+            box-shadow: $dropShadow;
+            border-radius: 10px;
+            width: 80%;
+            justify-self: center;
+
+            &:active{
+                box-shadow: none;
+            }
+        }
+
+        .errors{
+            height: 3rem;
+            margin: 1rem;
+            font-weight: 500;
+            text-align: center;
+            font-size: $fontSizeSmall;
+
+            .error{
+                font-size: $fontSizeSmall;
+                line-height: 1.5rem;
+                color: red;
+                text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            }
+        }
+    }
+}
