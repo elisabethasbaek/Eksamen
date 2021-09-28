@@ -1,0 +1,30 @@
+@import "/variables";
+
+.menu{
+    background-color: $primaryColor;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    &__list{
+        display: flex;
+        justify-content: space-between;
+
+        .item{
+            color: $primaryFontColor;
+            border: 1px solid $primaryFontColor;
+            border-radius: 50px;
+            height: 2.7rem;
+            width: 2.7rem;
+            display: grid;
+            text-decoration: none;
+
+            li{
+                font-size: $fontSizeMedium;
+                place-self: center;
+            }
+        }
+    }
+}
