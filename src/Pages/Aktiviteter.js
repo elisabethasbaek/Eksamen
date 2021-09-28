@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "../Styling/Aktiviteter.scss";
+import "./Styling/Aktiviteter.scss";
+import { Link } from "@reach/router";
 
 export default function Aktiviteter(){
     var [activities, setActivities] = useState([]);
@@ -17,14 +18,16 @@ export default function Aktiviteter(){
             <ul className="aktiviteter__liste">
                 {activities && activities.map(function(activity){
                     return(
-                        <li className="enkeltAktivitet" key={`${activity.id}${activity.name}`}>
-                            <img src={activity.asset.url} alt="" className="enkeltAktivitet__image"/>
-                            <div className="enkeltAktivitet__text">
-                                <p className="name">{activity.name}</p>
-                                <p className="age">{activity.minAge}-{activity.maxAge} år</p>
+                        <Link to={`/aktiviteter/${activity.id}`} key={`${activity.id}${activity.name}`} className="link">
+                            <li className="enkeltAktivitet">
+                                <img src={activity.asset.url} alt="" className="enkeltAktivitet__image"/>
+                                <div className="enkeltAktivitet__text">
+                                    <p className="name">{activity.name}</p>
+                                    <p className="age">{activity.minAge}-{activity.maxAge} år</p>
 
-                            </div>
-                        </li>
+                                </div>
+                            </li>
+                        </Link>
                     )
                 })}
             </ul>

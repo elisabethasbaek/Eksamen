@@ -1,5 +1,5 @@
 import Button from "../Components/Button";
-import "../Styling/Velkommen.scss";
+import "./Styling/Velkommen.scss";
 import React from "react";
 import { Link } from "@reach/router";
 

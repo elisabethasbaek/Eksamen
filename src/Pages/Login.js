@@ -1,4 +1,4 @@
-import "../Styling/Login.scss";
+import "./Styling/Login.scss";
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import TokenContext from "../TokenContext";

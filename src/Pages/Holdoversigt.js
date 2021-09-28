@@ -1,4 +1,4 @@
-import "../Styling/Holdoversigt.scss";
+import "./Styling/Holdoversigt.scss";
 
 export default function Holdoversigt(){
     return(

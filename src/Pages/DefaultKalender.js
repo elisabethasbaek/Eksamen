@@ -1,4 +1,4 @@
-import "../Styling/DefaultKalender.scss";
+import "./Styling/DefaultKalender.scss";
 
 export default function DefaultKalender(){
     return(
