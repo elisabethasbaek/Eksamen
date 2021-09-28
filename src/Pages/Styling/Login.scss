@@ -85,6 +85,27 @@
             }
         }
 
+        .rememberMe{
+            text-align: center;
+
+            input{
+                margin-right: 1rem;
+                width: 1rem;
+                height: 1rem;
+                outline: none;
+                border: none;
+
+                &:checked{
+                    color: $accentColorLight;
+                }
+            }
+            
+            label{
+                font-size: $fontSizeSmall;
+                color: $primaryColor;
+            }
+        }
+
         .errors{
             height: 3rem;
             margin: 1rem;

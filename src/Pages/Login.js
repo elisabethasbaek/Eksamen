@@ -11,7 +11,9 @@ export default function Login(){
     var [loginError, setLoginError] = useState("");
     var setToken = useContext(TokenContext)[1];
 
-    function login(data){     
+    function login(data){   
+        console.log(data);
+
         axios({
             method: "POST",
             url: "http://localhost:4000/auth/token",
@@ -25,15 +27,18 @@ export default function Login(){
         })
         .then(response => {
             setToken(response.data);
-            var d = new Date();
-            d.setTime(d.getTime() + (30*24*60*1000));
-            document.cookie = `token=${JSON.stringify(response.data)}; expires=${d.toUTCString()}`;
+
+            if(data.rememberMe === true){
+                var d = new Date();
+                d.setTime(d.getTime() + (30*24*60*1000));
+                document.cookie = `token=${JSON.stringify(response.data)}; expires=${d.toUTCString()}`;
+            }
+
             navigate("/aktiviteter");
         })
         .catch(function(error){
-            setLoginError("Dit koreord eller brugernavn var forkert");
+            setLoginError("Dit kodeord eller brugernavn var forkert");
         })
-        console.log(data);
     }
 
     return(
@@ -70,6 +75,16 @@ export default function Login(){
                         </input>
 
                         <Button type="submit" text="Log ind" />
+
+                        <div className="rememberMe">
+                            <input
+                                type="checkbox"
+                                name="rememberMe"
+                                id="rememberMe"
+                                {...register("rememberMe", {required: false})}
+                            />
+                            <label>Husk mig</label>
+                        </div>
                     </fieldset>
                 </form>
 
