@@ -6,10 +6,10 @@ import { Router } from "@reach/router";
 import Velkommen from "./Pages/Velkommen";
 import Aktiviteter from "./Pages/Aktiviteter";
 import Aktivitetsdetaljer from"./Pages/Aktivitetsdetaljer";
-import Kalender from "./Pages/Kalender";
 import Holdoversigt from "./Pages/Holdoversigt";
 import Search from "./Pages/Search";
 import Login from "./Pages/Login";
+import Kalender from "./Pages/Kalender";
 
 export default function App() {
     var tokenState = useState({});

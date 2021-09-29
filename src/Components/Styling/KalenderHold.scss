@@ -1,5 +1,27 @@
 @import "/variables";
 
 .kalenderHold{
+    background-color: $primaryColor;
+    margin: $mainPadding;
+    border-radius: 15px;
+    padding: 1rem $mainPadding 1.5rem $mainPadding;
     
+    &__link{
+        text-decoration: none;
+        color: $primaryFontColor;
+        
+        .holdHeading{
+            font-size: $fontSizeLarge;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+    
+        .holdDayTime{
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+    }
 }

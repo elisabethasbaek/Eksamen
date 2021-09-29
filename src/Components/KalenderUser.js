@@ -1,12 +1,9 @@
-import "./Styling/Kalender.scss";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import KalenderUser from "../Components/KalenderUser";
-import KalenderInstructor from "../Components/KalenderInstructor";
-import Heading from "../Components/Heading";
-import Menu from "../Components/Menu";
+import { useEffect, useState } from "react";
+import KalenderHold from "./KalenderHold";
+import "./Styling/KalenderUser.scss";
 
-export default function Kalender(){
+export default function KalenderUser(){
     var [userCookie, setUserCookie] = useState("");
     var [user, setUser] = useState([]);
 
@@ -47,19 +44,20 @@ export default function Kalender(){
         })
     }, [setUser, userCookie.userId, userCookie.token]);
 
+    console.log(user)
+
     return(
-        <main className="kalender">
-            <Heading text="Kalender" />
-
-            {userCookie.role === "default"
-            ? <KalenderUser /> 
-            : null}
-
-            {userCookie.role === "instructor"
-            ? <KalenderInstructor /> 
-            : null}
-
-            <Menu />
-        </main>
+        <article className="kalenderUser">
+            {user.activities?.map(function(activity) {
+                return (
+                    <KalenderHold
+                        heading={activity.name}
+                        day={activity.weekday}
+                        time={activity.time}
+                        to={`/aktiviteter/${activity.id}`}
+                    />
+                    )
+            })}
+        </article>
     )
 }
