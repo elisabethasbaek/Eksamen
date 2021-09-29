@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import KalenderHold from "./KalenderHold";
 import "./Styling/KalenderInstructor.scss";
 
-export default function KalenderInstructor(props){
+export default function KalenderInstructor(){
     var [activities, setActivities] = useState([]);
-    var [user, setUser] = useState([]);
     var [userCookie, setUserCookie] = useState("");
     
     useEffect(function () {
@@ -40,8 +39,6 @@ export default function KalenderInstructor(props){
 
     var matchy = activities.filter((activity) => activity.instructorId.toString().match(userCookie.userId));
 
-    console.log(matchy);
-
     function Content(){
         if(matchy){
             return(
@@ -52,7 +49,7 @@ export default function KalenderInstructor(props){
                             heading={match.name}
                             day={match.weekday}
                             time={match.time}
-                            to="/holdoversigt"
+                            to={`/kalender/${match.id}`}
                         />
                     )
                 })}

@@ -21,9 +21,9 @@ export default function App() {
                 <Aktiviteter path="/aktiviteter" />
                 <Aktivitetsdetaljer path="/aktiviteter/:id" />
                 <Kalender path="/kalender" />
+                <Holdoversigt path="/kalender/:id" />
                 <Search path="/search" />
                 <Login path="/login" />
-                <Holdoversigt path="/holdoversigt" />
             </Router>
         </TokenContext.Provider>
     );
