@@ -62,26 +62,29 @@ export default function Aktivitetsdetaljer(props){
         
         var matchy = user.activities?.filter((activity) => activity.id.toString().match(props.id));
 
-        if (matchy && matchy.length === 0){
-            return(
-                <Button
-                    text="Tilmeld"
-                    onClick={signUp}
-                    key={1 + (Math.random() * (10000000000-1))}
-                />
+        
+        if(user.age >= activity.minAge){
+            if (matchy && matchy.length === 0){
+                return(
+                    <Button
+                        text="Tilmeld"
+                        onClick={signUp}
+                        key={1 + (Math.random() * (10000000000-1))}
+                    />
+                    )
+            } else {
+                return (
+                    <Button
+                        text="Afmeld"
+                        onClick={deleteFromActivity}
+                        key={1 + (Math.random() * (10000000000-1))}
+                    />
                 )
+            }
         } else {
-            return (
-                <Button
-                    text="Afmeld"
-                    onClick={deleteFromActivity}
-                    key={1 + (Math.random() * (10000000000-1))}
-                />
-            )
+            return null
         }
     }
-
-    console.log(user)
 
     function getCookie(cname) {
         let name = cname + "=";
@@ -105,6 +108,9 @@ export default function Aktivitetsdetaljer(props){
             setUserCookie(JSON.parse(getCookie("token")));
         }
     }, [setUserCookie]);
+
+    console.log(user);
+    console.log(activity)
 
     return(
         <main className="aktivitetsdetaljer">
