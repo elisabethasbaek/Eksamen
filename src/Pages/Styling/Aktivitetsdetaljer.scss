@@ -23,6 +23,18 @@
             margin-bottom: 1.5rem;
             margin-right: 1.5rem;
         }
+
+        .buttonLink{
+            grid-area: 1/1/2/2;
+            place-self: end;
+
+            .button{
+                width: 90%;
+                margin-bottom: 1.5rem;
+                margin-right: 1.5rem;
+                padding: 0 1rem;
+            }
+        }
     }
 
     &__info{

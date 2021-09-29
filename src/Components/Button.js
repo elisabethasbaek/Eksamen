@@ -1,7 +1,7 @@
 import "./Styling/Button.scss";
 
-export default function Button({type, text}){
+export default function Button({type, text, onClick}){
     return(
-        <button type={type} className="button">{text}</button>
+        <button onClick={onClick} type={type} className="button">{text}</button>
     )
 }
