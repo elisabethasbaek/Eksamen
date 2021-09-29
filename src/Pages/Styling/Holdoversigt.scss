@@ -1,5 +1,40 @@
 @import "/variables";
 
 .holdoversigt{
-    
+    background-color: $accentColorDark;
+    min-height: 100vh;
+
+    .heading{
+        margin-bottom: 2rem;
+    }
+
+    &__name{
+        color: $primaryColor;
+        margin: 0.5rem $mainPadding;
+        font-size: $fontSizeSmall;
+    }
+
+    &__fejl{
+        -margin-top: 10vh;
+        display: grid;
+        grid-template-rows: 20% 20% auto;
+        
+        p{
+            margin: 3rem $mainPadding;
+            color:$primaryColor;
+            font-size: $fontSizeMedium;
+            font-weight: normal;
+        }
+
+        .toLogIn{
+            margin: 3rem $mainPadding;
+            justify-self: center;
+
+            .button{
+                background-color: $primaryColor;
+                color: $accentColorDark;
+                width: 50vw;
+            }
+        }
+    }
 }

@@ -46,6 +46,7 @@ export default function Kalender(){
             console.error(error);
         })
     }, [setUser, userCookie.userId, userCookie.token]);
+    console.log(user);
 
     return(
         <main className="kalender">

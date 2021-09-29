@@ -99,7 +99,7 @@ export default function Aktivitetsdetaljer(props){
         }
         return "";
     }
-
+    
     useEffect(function(){
         if(getCookie("token") !== ""){
             setUserCookie(JSON.parse(getCookie("token")));
