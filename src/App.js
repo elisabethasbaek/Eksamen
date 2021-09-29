@@ -6,7 +6,7 @@ import { Router } from "@reach/router";
 import Velkommen from "./Pages/Velkommen";
 import Aktiviteter from "./Pages/Aktiviteter";
 import Aktivitetsdetaljer from"./Pages/Aktivitetsdetaljer";
-import DefaultKalender from "./Pages/DefaultKalender";
+import Kalender from "./Pages/Kalender";
 import Holdoversigt from "./Pages/Holdoversigt";
 import Search from "./Pages/Search";
 import Login from "./Pages/Login";
@@ -20,7 +20,7 @@ export default function App() {
                 <Velkommen default />
                 <Aktiviteter path="/aktiviteter" />
                 <Aktivitetsdetaljer path="/aktiviteter/:id" />
-                <DefaultKalender path="/defaultkalender" />
+                <Kalender path="/kalender" />
                 <Search path="/search" />
                 <Login path="/login" />
                 <Holdoversigt path="/holdoversigt" />
