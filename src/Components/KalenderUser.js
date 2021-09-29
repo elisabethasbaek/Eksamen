@@ -44,8 +44,6 @@ export default function KalenderUser(){
         })
     }, [setUser, userCookie.userId, userCookie.token]);
 
-    console.log(user)
-
     return(
         <article className="kalenderUser">
             {user.activities?.map(function(activity) {
