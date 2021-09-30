@@ -4,10 +4,13 @@ import AktivitetCard from "../Components/AktivitetCard";
 import Heading from "../Components/Heading";
 import Menu from "../Components/Menu";
 import "./Styling/Search.scss";
+import { useContext } from "react";
+import SearchContext from "../SearchContext";
 
 export default function Search(){
     var [activities, setActivities] = useState([]);
     var [searchResults, setsearchResults] = useState([]);
+    var {openClose, setOpenClose} = useContext(SearchContext);
     
     useEffect(function () {
         axios.get("http://localhost:4000/api/v1/activities")
@@ -46,16 +49,18 @@ export default function Search(){
                     id="keyword"
                     name="keyword"
                     onKeyUp={search}
+                    onFocus={() => setOpenClose(!openClose)}
                 />
                 <button
                     className="fas fa-search">
                 </button>
             </form>
 
-            {searchResults.length === 0
-            ? <p className="search__noResults">Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet</p>
-            : <ul className="search__liste">
-                {searchResults && searchResults.map(function(activity){
+            {openClose && 
+            <ul className="search__liste">
+                {searchResults.length === 0
+                ? <p className="noResults">Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet</p>
+                : searchResults.map(function(activity){
                     return(
                         <AktivitetCard
                             to={`/aktiviteter/${activity.id}`}
