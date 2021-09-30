@@ -7,6 +7,7 @@ import "./Styling/Search.scss";
 
 export default function Search(){
     var [activities, setActivities] = useState([]);
+    var [searchResults, setsearchResults] = useState([]);
     
     useEffect(function () {
         axios.get("http://localhost:4000/api/v1/activities")
@@ -15,28 +16,46 @@ export default function Search(){
         });
     }, [setActivities]);
 
-    function handleSubmit(){
+    function search(event){
+        var tempArray = activities.filter(element => {
+            if(event.target.value.length >= 1){
+                if(element.name.toLowerCase().includes(event.target.value.toLowerCase())){
+                    return true
+                } 
+                if(element.weekday.toLowerCase().includes(event.target.value.toLowerCase())){
+                    return true
+                }
+                if(element.description.toLowerCase().includes(event.target.value.toLowerCase())){
+                    return true
+                }
+            } else {
+                setsearchResults([]);
+            }
+        })
 
+        setsearchResults(tempArray); 
     }
     
     return(
         <main className="search">
             <Heading text="Søg" />
 
-            <form onSubmit={handleSubmit} className="search__searchBar">
+            <form className="search__searchBar">
                 <input
-                    type="text"
-                    id="search"
-                    name="search"
+                    type="search"
+                    id="keyword"
+                    name="keyword"
+                    onKeyUp={search}
                 />
                 <button
-                    type="submit"
                     className="fas fa-search">
                 </button>
             </form>
 
-            <ul className="search__liste">
-                {activities && activities.map(function(activity){
+            {searchResults.length === 0
+            ? <p className="search__noResults">Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet</p>
+            : <ul className="search__liste">
+                {searchResults && searchResults.map(function(activity){
                     return(
                         <AktivitetCard
                             to={`/aktiviteter/${activity.id}`}
@@ -49,8 +68,8 @@ export default function Search(){
                         />
                     )
                 })}
-            </ul>
-
+            </ul>}
+            
             <Menu />
         </main>
     )

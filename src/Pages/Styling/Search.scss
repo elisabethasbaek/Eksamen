@@ -2,6 +2,7 @@
 
 .search{
     min-height: 100vh;
+    width: 100vw;
     background-color: $accentColorDark;
     position: absolute;
     top: 0;
@@ -32,6 +33,13 @@
             justify-self: end;
             font-size: $fontSizeSmall;
         }
+    }
+
+    &__noResults{
+        margin: 6.5rem $mainPadding;
+        font-size: $fontSizeMedium;
+        color: $primaryColor;
+        line-height: 150%;
     }
 
     &__liste{

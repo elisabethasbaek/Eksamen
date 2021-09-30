@@ -109,8 +109,7 @@ export default function Aktivitetsdetaljer(props){
         }
     }, [setUserCookie]);
 
-    console.log(user);
-    console.log(activity)
+    console.log(activity);
 
     return(
         <main className="aktivitetsdetaljer">
