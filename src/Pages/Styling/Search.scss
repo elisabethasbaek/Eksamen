@@ -9,7 +9,9 @@
 
     &__searchBar{
         display: grid;
-        margin: 1rem $mainPadding;
+        padding: 1rem $mainPadding;
+        position: fixed;
+        background-color: RGBA(94, 46, 83, 0.7);
 
         input,
         button{
@@ -35,6 +37,7 @@
     &__liste{
         list-style: none;
         margin: 0;
+        margin-top: 6.5rem;
         padding: 0;
     }
 }
