@@ -43,13 +43,14 @@ export default function Search(){
         <main className="search">
             <Heading text="Søg" />
 
-            <form className="search__searchBar">
+            <form className="search__searchBar" autoComplete="off">
                 <input
+                    autoComplete="off"
                     type="search"
                     id="keyword"
                     name="keyword"
                     onKeyUp={search}
-                    onFocus={() => setOpenClose(!openClose)}
+                    onFocus={() => setOpenClose(true)}
                 />
                 <button
                     className="fas fa-search">
