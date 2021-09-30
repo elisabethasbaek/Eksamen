@@ -1,0 +1,39 @@
+@import "/variables";
+
+.aktivitetCard{
+    text-decoration: none;
+
+    .enkeltAktivitet{
+        display: grid;
+        color: $primaryFontColor;
+        margin: 1.8rem $mainPadding;
+
+        &__image{
+            grid-area: 1/1/-1/-1;
+            width: 100%;
+            height: 45vh;
+            object-fit: cover;
+            object-position: 50% 0;
+            border-top-right-radius: 35px;
+            border-top-left-radius: 35px;
+            border-bottom-right-radius: none;
+            border-bottom-left-radius: 35px;
+        }
+
+        &__text{
+            grid-area: 1/1/-1/-1;
+            align-self: end;
+            border-top-right-radius: 35px;
+            border-bottom-left-radius: 35px;
+            background-color: $accentColorLightOpacity;
+            padding: 1.2rem 1.5rem;
+            
+            .name,
+            .age{
+                line-height: 150%;
+                font-size: $fontSizeSmall;
+                color: $primaryFontColor;
+            }
+        }
+    }
+}

@@ -3,6 +3,9 @@
 .search{
     min-height: 100vh;
     background-color: $accentColorDark;
+    position: absolute;
+    top: 0;
+    padding-bottom: 4rem;
 
     &__searchBar{
         display: grid;
@@ -27,5 +30,11 @@
             justify-self: end;
             font-size: $fontSizeSmall;
         }
+    }
+
+    &__liste{
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 }

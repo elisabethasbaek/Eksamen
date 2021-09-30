@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Styling/Aktiviteter.scss";
-import { Link } from "@reach/router";
 import Heading from "../Components/Heading";
 import Menu from "../Components/Menu";
+import AktivitetCard from "../Components/AktivitetCard";
 
 export default function Aktiviteter(){
     var [activities, setActivities] = useState([]);
@@ -22,16 +22,15 @@ export default function Aktiviteter(){
             <ul className="aktiviteter__liste">
                 {activities && activities.map(function(activity){
                     return(
-                        <Link to={`/aktiviteter/${activity.id}`} key={`${activity.id}${activity.name}`} className="link">
-                            <li className="enkeltAktivitet">
-                                <img src={activity.asset.url} alt="" className="enkeltAktivitet__image"/>
-                                <div className="enkeltAktivitet__text">
-                                    <p className="name">{activity.name}</p>
-                                    <p className="age">{activity.minAge}-{activity.maxAge} år</p>
-
-                                </div>
-                            </li>
-                        </Link>
+                        <AktivitetCard
+                            to={`/aktiviteter/${activity.id}`}
+                            key={`${activity.id}${activity.name}`}
+                            alt={activity.name}
+                            src={activity.asset.url}
+                            name={activity.name}
+                            minAge={activity.minAge}
+                            maxAge={activity.maxAge}
+                        />
                     )
                 })}
             </ul>
