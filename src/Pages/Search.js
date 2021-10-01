@@ -6,6 +6,7 @@ import Menu from "../Components/Menu";
 import "./Styling/Search.scss";
 import { useContext } from "react";
 import SearchContext from "../SearchContext";
+import {FiSearch} from "react-icons/fi";
 
 export default function Search(){
     var [activities, setActivities] = useState([]);
@@ -52,8 +53,8 @@ export default function Search(){
                     onKeyUp={search}
                     onFocus={() => setOpenClose(true)}
                 />
-                <button
-                    className="fas fa-search">
+                <button>
+                    <FiSearch className="icon" />             
                 </button>
             </form>
 
