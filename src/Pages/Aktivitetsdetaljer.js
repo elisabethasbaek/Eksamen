@@ -4,16 +4,19 @@ import Menu from "../Components/Menu";
 import "./Styling/Aktivitetsdetaljer.scss";
 import Button from "../Components/Button";
 import { Link } from "@reach/router";
+import SpinnerModule from "../Components/SpinnerModule";
 
 export default function Aktivitetsdetaljer(props){
     var [activity, setActivity] = useState([]);
     var [user, setUser] = useState([]);
     var [userCookie, setUserCookie] = useState("");
+    var [isLoading, setIsLoading] = useState(true);
     
     useEffect(function () {
         axios.get(`http://localhost:4000/api/v1/activities/${props.id}`)
         .then(function (response) {
             setActivity(response.data);
+            setIsLoading(false);
         })
         .catch(error => {
             console.error(error);
@@ -61,7 +64,6 @@ export default function Aktivitetsdetaljer(props){
         }
         
         var matchy = user.activities?.filter((activity) => activity.id.toString().match(props.id));
-
         
         if(user.age >= activity.minAge){
             if (matchy && matchy.length === 0){
@@ -109,30 +111,33 @@ export default function Aktivitetsdetaljer(props){
         }
     }, [setUserCookie]);
 
-    var d = new Date(new Date().getTime() + (30*24*60*250))
-    console.log(d);
-
     return(
         <main className="aktivitetsdetaljer">
-            <div className="aktivitetsdetaljer__image">
-                <img src={activity.asset?.url} alt="" className="image" />
+            {isLoading
+                ?   <SpinnerModule />
+                :   <>
+                    <div className="aktivitetsdetaljer__image">
+                        <img src={activity.asset?.url} alt="" className="image" />
 
-                {userCookie
-                ? signupLeave()
-                : <Link to="/login" className="buttonLink"><Button text="Log ind for at tilmelde" /></Link>}
-            </div>
+                        {userCookie
+                            ?   signupLeave()
+                            :   <Link to="/login" className="buttonLink"><Button text="Log ind for at tilmelde" /></Link>
+                        }
+                    </div>
 
-            <div className="aktivitetsdetaljer__info">
-                <p className="name">{activity.name}</p>
-                <div className="timeWeekday">
-                    <p className="weekday">{activity.weekday}</p>
-                    <p className="time">{activity.time}</p>
-                </div>
-                <p className="age">{activity.minAge}-{activity.maxAge} år</p>
-                <p className="description">{activity.description}</p>
-            </div>
+                    <div className="aktivitetsdetaljer__info">
+                        <p className="name">{activity.name}</p>
+                        <div className="timeWeekday">
+                            <p className="weekday">{activity.weekday}</p>
+                            <p className="time">{activity.time}</p>
+                        </div>
+                        <p className="age">{activity.minAge}-{activity.maxAge} år</p>
+                        <p className="description">{activity.description}</p>
+                    </div>
 
-            <Menu />
+                    <Menu />
+                    </>
+            }
         </main>
     )
 }

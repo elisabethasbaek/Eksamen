@@ -7,10 +7,12 @@ import Heading from "../Components/Heading";
 import Menu from "../Components/Menu";
 import Button from "../Components/Button";
 import { Link } from "@reach/router";
+import SpinnerModule from "../Components/SpinnerModule";
 
 export default function Kalender(){
     var [userCookie, setUserCookie] = useState("");
     var [user, setUser] = useState([]);
+    var [isLoading, setIsLoading] = useState(true);
 
     function getCookie(cname) {
         let name = cname + "=";
@@ -43,6 +45,7 @@ export default function Kalender(){
         })
         .then(function(response) {
             setUser(response.data);
+            setIsLoading(false);
         })
         .catch(error => {
             console.error(error);
@@ -66,14 +69,24 @@ export default function Kalender(){
 
     return(
         <main className="kalender">
-            <Heading text="Kalender" />
-
-
-            {!userCookie
-            ? <><p className="kalender__errorText">Log ind for at se din oversigt</p><Link to="/login" className="kalender__loginLink"><Button text="Log ind" /></Link></>
-            : UserType()}
-
-            <Menu />
+            {isLoading
+                ?   <SpinnerModule />
+                :   <>
+                    <Heading text="Kalender" />
+    
+                    {!userCookie
+                        ?   <>
+                            <p className="kalender__errorText">Log ind for at se din oversigt</p>
+                            <Link to="/login" className="kalender__loginLink">
+                                <Button text="Log ind" />
+                            </Link>
+                            </>
+                        :   UserType()
+                    }
+        
+                    <Menu />
+                    </>
+            }
         </main>
     )
 }

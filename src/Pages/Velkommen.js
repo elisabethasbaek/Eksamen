@@ -4,7 +4,6 @@ import React from "react";
 import { Link } from "@reach/router";
 
 export default function Velkommen(){
-
     return(
         <main className="velkommen">
             <img className="velkommen__background" src="/splash-image.jpg" alt="background"/>

@@ -54,7 +54,7 @@ export default function KalenderUser(){
                         time={activity.time}
                         to={`/aktiviteter/${activity.id}`}
                     />
-                    )
+                )
             })}
         </article>
     )

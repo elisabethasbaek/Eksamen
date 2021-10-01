@@ -5,15 +5,18 @@ import "./Styling/Holdoversigt.scss";
 import Button from "../Components/Button";
 import Menu from "../Components/Menu";
 import { Link } from "@reach/router";
+import SpinnerModule from "../Components/SpinnerModule";
 
 export default function Holdoversigt(props){
     var [activity, setActivity] = useState([]);
     var [userCookie, setUserCookie] = useState("");
+    var [isLoading, setIsLoading] = useState(true);
     
     useEffect(function () {
         axios.get(`http://localhost:4000/api/v1/activities/${props.id}`)
         .then(function (response) {
             setActivity(response.data);
+            setIsLoading(false);
         })
         .catch(error => {
             console.error(error);
@@ -45,21 +48,27 @@ export default function Holdoversigt(props){
 
     return(
         <main className="holdoversigt">
-            <Heading text={activity.name} />
+            {isLoading
+                ?   <SpinnerModule />
+                :   <>
+                    <Heading text={activity.name} />
 
-            {userCookie.role === "instructor"
-            ? activity.users?.map(function(user){
-                return(
-                    <p className="holdoversigt__name">{user.firstname} {user.lastname}</p>
-                )
-            })
-            : <div className="holdoversigt__fejl">
-                <p>Du har ikke adgang til informationen på denne side</p>
-                <p>Log ind på din instruktør-profil og prøv igen</p>
-                <Link className="toLogIn" to="/login"><Button text="Log ind" /></Link>
-            </div>}
+                    {userCookie.role === "instructor"
+                        ?   activity.users?.map(function(user){
+                                return(
+                                    <p className="holdoversigt__name">{user.firstname} {user.lastname}</p>
+                                )
+                            })
+                        :   <div className="holdoversigt__fejl">
+                                <p>Du har ikke adgang til informationen på denne side</p>
+                                <p>Log ind på din instruktør-profil og prøv igen</p>
+                                <Link className="toLogIn" to="/login"><Button text="Log ind" /></Link>
+                            </div>
+                    }
 
-            <Menu />
+                    <Menu />
+                    </>
+            }
         </main>
     )
 }
