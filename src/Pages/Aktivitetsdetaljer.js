@@ -109,7 +109,8 @@ export default function Aktivitetsdetaljer(props){
         }
     }, [setUserCookie]);
 
-    console.log(activity);
+    var d = new Date(new Date().getTime() + (30*24*60*250))
+    console.log(d);
 
     return(
         <main className="aktivitetsdetaljer">

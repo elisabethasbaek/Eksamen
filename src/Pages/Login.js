@@ -30,8 +30,13 @@ export default function Login(){
 
             if(data.rememberMe === true){
                 var d = new Date();
-                d.setTime(d.getTime() + (30*24*60*1000));
+                d.setTime(d.getTime() + (30*24*60*1000*30)); /* save information for 30 days */
                 document.cookie = `token=${JSON.stringify(response.data)}; expires=${d.toUTCString()}`;
+            }
+
+            if(data.rememberMe === false){
+                document.cookie = `token=${JSON.stringify(response.data)}`;
+                /* cookie will be deleted once the window (not just the tab) is closed */
             }
 
             navigate("/aktiviteter");
