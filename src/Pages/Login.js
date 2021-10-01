@@ -5,14 +5,16 @@ import TokenContext from "../TokenContext";
 import {useState, useContext} from "react";
 import { navigate } from "@reach/router";
 import Button from "../Components/Button";
+import SpinnerModule from "../Components/SpinnerModule";
 
 export default function Login(){
     var {handleSubmit, register, formState: {errors}} = useForm();
     var [loginError, setLoginError] = useState("");
     var setToken = useContext(TokenContext)[1];
+    var [isLoading, setIsLoading] = useState(false);
 
     function login(data){   
-        console.log(data);
+        setIsLoading(true);
 
         axios({
             method: "POST",
@@ -48,6 +50,10 @@ export default function Login(){
 
     return(
         <main className="login">
+            {isLoading
+            ? <SpinnerModule />
+            : null}
+
             <div className="login__background">
                 <div className="overlay"></div>
                 <img className="image" src="/splash-image.jpg" alt="background"/>
@@ -79,7 +85,11 @@ export default function Login(){
                             {...register("password", {required: true})}>
                         </input>
 
-                        <Button type="submit" text="Log ind" />
+                        <Button
+                            type="submit"
+                            text="Log ind"
+                            disabled={isLoading}
+                        />
 
                         <div className="rememberMe">
                             <input
