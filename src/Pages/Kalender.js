@@ -5,6 +5,8 @@ import KalenderUser from "../Components/KalenderUser";
 import KalenderInstructor from "../Components/KalenderInstructor";
 import Heading from "../Components/Heading";
 import Menu from "../Components/Menu";
+import Button from "../Components/Button";
+import { Link } from "@reach/router";
 
 export default function Kalender(){
     var [userCookie, setUserCookie] = useState("");
@@ -46,19 +48,30 @@ export default function Kalender(){
             console.error(error);
         })
     }, [setUser, userCookie.userId, userCookie.token]);
-    console.log(user);
+
+    function UserType(){
+        if(userCookie.role === "default"){
+            return(
+                <KalenderUser />
+            )
+        }
+    
+        if(userCookie.role === "instructor"){
+            return(
+                <KalenderInstructor />
+            )
+
+        }
+    }
 
     return(
         <main className="kalender">
             <Heading text="Kalender" />
 
-            {userCookie.role === "default"
-            ? <KalenderUser /> 
-            : null}
 
-            {userCookie.role === "instructor"
-            ? <KalenderInstructor /> 
-            : null}
+            {!userCookie
+            ? <><p className="kalender__errorText">Log ind for at se din oversigt</p><Link to="/login" className="kalender__loginLink"><Button text="Log ind" /></Link></>
+            : UserType()}
 
             <Menu />
         </main>

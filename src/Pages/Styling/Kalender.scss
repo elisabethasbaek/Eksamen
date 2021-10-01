@@ -3,4 +3,23 @@
 .kalender{
     background-color: $accentColorDark;
     min-height: 100vh;
+    
+    &__errorText{
+        text-align: center;
+        font-size: $fontSizeMedium;
+        color: $primaryColor;
+        margin: 10vh $mainPadding 2rem $mainPadding;
+    }
+
+    &__loginLink{
+        display: grid;
+        text-decoration: none;
+
+        .button{
+            color: $accentColorDark;
+            background-color: $primaryColor;
+            width: 60%;
+        }
+    }
+        
 }
