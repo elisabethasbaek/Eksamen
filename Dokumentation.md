@@ -1,6 +1,6 @@
 # Dokumentation
 
-### _Valgfrie opgave løst: **Opgave C - Cookies**_
+# _Valgfri opgave løst: **Opgave C - Cookies**_
 
 ## **Tech Stack**
 
