@@ -7,11 +7,11 @@ import Heading from "../Components/Heading";
 import Menu from "../Components/Menu";
 import Button from "../Components/Button";
 import { Link } from "@reach/router";
-import SpinnerModule from "../Components/SpinnerModule";
 
 export default function Kalender(){
     var [userCookie, setUserCookie] = useState("");
     var [user, setUser] = useState([]);
+    console.log(user);
 
     function getCookie(cname) {
         let name = cname + "=";
